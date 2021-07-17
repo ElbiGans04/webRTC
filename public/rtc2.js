@@ -102,4 +102,14 @@
       console.log("success");
     }
   });
+
+
+
+  // Data Channel
+  peerConnection.addEventListener('datachannel', event => {
+    const dataChannel = event.channel;
+    dataChannel.onmessage = message => {
+      console.log(message)
+    }
+  });
 })();

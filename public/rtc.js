@@ -10,6 +10,13 @@
   const peerConnection = new RTCPeerConnection(configuration);
   const remoteStream = new MediaStream();
 
+
+  // Data channel memungkinkan kita untuk mengirim sembarang data ke koneksi peer
+  const channel = peerConnection.createDataChannel('fael');
+  channel.onopen = (event) => {
+    console.log("channel success open");
+    channel.send("hello world")
+  }
   start.onclick = async () => {
     const localStream = await navigator.mediaDevices.getUserMedia({
       video: true,
